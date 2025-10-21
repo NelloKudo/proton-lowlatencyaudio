@@ -45901,6 +45901,708 @@ struct wow64_ISteamVideo_STEAMVIDEO_INTERFACE_V007_GetOPFStringForApp_params
     W32_PTR(int32_t *pnBufferSize, pnBufferSize, int32_t *);
 };
 
+struct ISteamBilling_SteamBilling002_InitCreditCardPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    uint32_t nCardIndex;
+    int8_t bStoreCardInfo;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_InitCreditCardPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    uint32_t nCardIndex;
+    int8_t bStoreCardInfo;
+};
+
+struct ISteamBilling_SteamBilling002_InitPayPalPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_InitPayPalPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+};
+
+struct ISteamBilling_SteamBilling002_GetActivationCodeInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    const char *pchActivationCode;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetActivationCodeInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    W32_PTR(const char *pchActivationCode, pchActivationCode, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_PurchaseWithActivationCode_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    const char *pchActivationCode;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_PurchaseWithActivationCode_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    W32_PTR(const char *pchActivationCode, pchActivationCode, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_GetFinalPrice_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetFinalPrice_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_CancelPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_CancelPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_CompletePurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_CompletePurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_UpdateCardInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_UpdateCardInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+};
+
+struct ISteamBilling_SteamBilling002_DeleteCard_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_DeleteCard_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetCardList_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetCardList_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_Obsolete_GetLicenses_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_Obsolete_GetLicenses_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_CancelLicense_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    int32_t nCancelReason;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_CancelLicense_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    int32_t nCancelReason;
+};
+
+struct ISteamBilling_SteamBilling002_GetPurchaseReceipts_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int8_t bUnacknowledgedOnly;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetPurchaseReceipts_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int8_t bUnacknowledgedOnly;
+};
+
+struct ISteamBilling_SteamBilling002_SetBillingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    const char *pchFirstName;
+    const char *pchLastName;
+    const char *pchAddress1;
+    const char *pchAddress2;
+    const char *pchCity;
+    const char *pchPostcode;
+    const char *pchState;
+    const char *pchCountry;
+    const char *pchPhone;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_SetBillingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    W32_PTR(const char *pchFirstName, pchFirstName, const char *);
+    W32_PTR(const char *pchLastName, pchLastName, const char *);
+    W32_PTR(const char *pchAddress1, pchAddress1, const char *);
+    W32_PTR(const char *pchAddress2, pchAddress2, const char *);
+    W32_PTR(const char *pchCity, pchCity, const char *);
+    W32_PTR(const char *pchPostcode, pchPostcode, const char *);
+    W32_PTR(const char *pchState, pchState, const char *);
+    W32_PTR(const char *pchCountry, pchCountry, const char *);
+    W32_PTR(const char *pchPhone, pchPhone, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_GetBillingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    char *pchFirstName;
+    char *pchLastName;
+    char *pchAddress1;
+    char *pchAddress2;
+    char *pchCity;
+    char *pchPostcode;
+    char *pchState;
+    char *pchCountry;
+    char *pchPhone;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetBillingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    W32_PTR(char *pchFirstName, pchFirstName, char *);
+    W32_PTR(char *pchLastName, pchLastName, char *);
+    W32_PTR(char *pchAddress1, pchAddress1, char *);
+    W32_PTR(char *pchAddress2, pchAddress2, char *);
+    W32_PTR(char *pchCity, pchCity, char *);
+    W32_PTR(char *pchPostcode, pchPostcode, char *);
+    W32_PTR(char *pchState, pchState, char *);
+    W32_PTR(char *pchCountry, pchCountry, char *);
+    W32_PTR(char *pchPhone, pchPhone, char *);
+};
+
+struct ISteamBilling_SteamBilling002_SetShippingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    const char *pchFirstName;
+    const char *pchLastName;
+    const char *pchAddress1;
+    const char *pchAddress2;
+    const char *pchCity;
+    const char *pchPostcode;
+    const char *pchState;
+    const char *pchCountry;
+    const char *pchPhone;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_SetShippingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    W32_PTR(const char *pchFirstName, pchFirstName, const char *);
+    W32_PTR(const char *pchLastName, pchLastName, const char *);
+    W32_PTR(const char *pchAddress1, pchAddress1, const char *);
+    W32_PTR(const char *pchAddress2, pchAddress2, const char *);
+    W32_PTR(const char *pchCity, pchCity, const char *);
+    W32_PTR(const char *pchPostcode, pchPostcode, const char *);
+    W32_PTR(const char *pchState, pchState, const char *);
+    W32_PTR(const char *pchCountry, pchCountry, const char *);
+    W32_PTR(const char *pchPhone, pchPhone, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_GetShippingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    char *pchFirstName;
+    char *pchLastName;
+    char *pchAddress1;
+    char *pchAddress2;
+    char *pchCity;
+    char *pchPostcode;
+    char *pchState;
+    char *pchCountry;
+    char *pchPhone;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetShippingAddress_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    W32_PTR(char *pchFirstName, pchFirstName, char *);
+    W32_PTR(char *pchLastName, pchLastName, char *);
+    W32_PTR(char *pchAddress1, pchAddress1, char *);
+    W32_PTR(char *pchAddress2, pchAddress2, char *);
+    W32_PTR(char *pchCity, pchCity, char *);
+    W32_PTR(char *pchPostcode, pchPostcode, char *);
+    W32_PTR(char *pchState, pchState, char *);
+    W32_PTR(char *pchCountry, pchCountry, char *);
+    W32_PTR(char *pchPhone, pchPhone, char *);
+};
+
+struct ISteamBilling_SteamBilling002_SetCardInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    int32_t eCreditCardType;
+    const char *pchCardNumber;
+    const char *pchCardHolderFirstName;
+    const char *pchCardHolderLastName;
+    const char *pchCardExpYear;
+    const char *pchCardExpMonth;
+    const char *pchCardCVV2;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_SetCardInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    int32_t eCreditCardType;
+    W32_PTR(const char *pchCardNumber, pchCardNumber, const char *);
+    W32_PTR(const char *pchCardHolderFirstName, pchCardHolderFirstName, const char *);
+    W32_PTR(const char *pchCardHolderLastName, pchCardHolderLastName, const char *);
+    W32_PTR(const char *pchCardExpYear, pchCardExpYear, const char *);
+    W32_PTR(const char *pchCardExpMonth, pchCardExpMonth, const char *);
+    W32_PTR(const char *pchCardCVV2, pchCardCVV2, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_GetCardInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    int32_t *eCreditCardType;
+    char *pchCardNumber;
+    char *pchCardHolderFirstName;
+    char *pchCardHolderLastName;
+    char *pchCardExpYear;
+    char *pchCardExpMonth;
+    char *pchCardCVV2;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetCardInfo_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    uint32_t nCardIndex;
+    W32_PTR(int32_t *eCreditCardType, eCreditCardType, int32_t *);
+    W32_PTR(char *pchCardNumber, pchCardNumber, char *);
+    W32_PTR(char *pchCardHolderFirstName, pchCardHolderFirstName, char *);
+    W32_PTR(char *pchCardHolderLastName, pchCardHolderLastName, char *);
+    W32_PTR(char *pchCardExpYear, pchCardExpYear, char *);
+    W32_PTR(char *pchCardExpMonth, pchCardExpMonth, char *);
+    W32_PTR(char *pchCardCVV2, pchCardCVV2, char *);
+};
+
+struct ISteamBilling_SteamBilling002_GetLicensePackageID_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicensePackageID_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicenseTimeCreated_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicenseTimeCreated_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicenseTimeNextProcess_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicenseTimeNextProcess_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicenseMinuteLimit_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicenseMinuteLimit_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicenseMinutesUsed_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicenseMinutesUsed_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicensePaymentMethod_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicensePaymentMethod_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicenseFlags_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicenseFlags_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetLicensePurchaseCountryCode_params
+{
+    struct u_iface u_iface;
+    struct u_buffer _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetLicensePurchaseCountryCode_params
+{
+    struct u_iface u_iface;
+    struct u_buffer _ret;
+    uint32_t nLicenseIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptPackageID_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptPackageID_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptStatus_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptStatus_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptResultDetail_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptResultDetail_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptTransTime_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptTransTime_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptTransID_params
+{
+    struct u_iface u_iface;
+    uint64_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptTransID_params
+{
+    struct u_iface u_iface;
+    uint64_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptPaymentMethod_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptPaymentMethod_params
+{
+    struct u_iface u_iface;
+    int32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptBaseCost_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptBaseCost_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptTotalDiscount_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptTotalDiscount_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptTax_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptTax_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptShipping_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptShipping_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetReceiptCountryCode_params
+{
+    struct u_iface u_iface;
+    struct u_buffer _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetReceiptCountryCode_params
+{
+    struct u_iface u_iface;
+    struct u_buffer _ret;
+    uint32_t nReceiptIndex;
+};
+
+struct ISteamBilling_SteamBilling002_GetNumLicenses_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetNumLicenses_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_GetNumReceipts_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetNumReceipts_params
+{
+    struct u_iface u_iface;
+    uint32_t _ret;
+};
+
+struct ISteamBilling_SteamBilling002_PurchaseWithMachineID_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    const char *pchCustomData;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_PurchaseWithMachineID_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    W32_PTR(const char *pchCustomData, pchCustomData, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_InitClickAndBuyPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    int64_t nAccountNum;
+    const char *pchState;
+    const char *pchCountryCode;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_InitClickAndBuyPurchase_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int32_t nPackageID;
+    int64_t nAccountNum;
+    W32_PTR(const char *pchState, pchState, const char *);
+    W32_PTR(const char *pchCountryCode, pchCountryCode, const char *);
+};
+
+struct ISteamBilling_SteamBilling002_GetPreviousClickAndBuyAccount_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    int64_t *pnAccountNum;
+    char *pchState;
+    char *pchCountryCode;
+};
+
+struct wow64_ISteamBilling_SteamBilling002_GetPreviousClickAndBuyAccount_params
+{
+    struct u_iface u_iface;
+    int8_t _ret;
+    W32_PTR(int64_t *pnAccountNum, pnAccountNum, int64_t *);
+    W32_PTR(char *pchState, pchState, char *);
+    W32_PTR(char *pchCountryCode, pchCountryCode, char *);
+};
+
 struct ISteamClient_SteamClient006_CreateSteamPipe_params
 {
     struct u_iface u_iface;
@@ -100402,6 +101104,49 @@ enum unix_funcs
     unix_ISteamVideo_STEAMVIDEO_INTERFACE_V007_IsBroadcasting,
     unix_ISteamVideo_STEAMVIDEO_INTERFACE_V007_GetOPFSettings,
     unix_ISteamVideo_STEAMVIDEO_INTERFACE_V007_GetOPFStringForApp,
+    unix_ISteamBilling_SteamBilling002_InitCreditCardPurchase,
+    unix_ISteamBilling_SteamBilling002_InitPayPalPurchase,
+    unix_ISteamBilling_SteamBilling002_GetActivationCodeInfo,
+    unix_ISteamBilling_SteamBilling002_PurchaseWithActivationCode,
+    unix_ISteamBilling_SteamBilling002_GetFinalPrice,
+    unix_ISteamBilling_SteamBilling002_CancelPurchase,
+    unix_ISteamBilling_SteamBilling002_CompletePurchase,
+    unix_ISteamBilling_SteamBilling002_UpdateCardInfo,
+    unix_ISteamBilling_SteamBilling002_DeleteCard,
+    unix_ISteamBilling_SteamBilling002_GetCardList,
+    unix_ISteamBilling_SteamBilling002_Obsolete_GetLicenses,
+    unix_ISteamBilling_SteamBilling002_CancelLicense,
+    unix_ISteamBilling_SteamBilling002_GetPurchaseReceipts,
+    unix_ISteamBilling_SteamBilling002_SetBillingAddress,
+    unix_ISteamBilling_SteamBilling002_GetBillingAddress,
+    unix_ISteamBilling_SteamBilling002_SetShippingAddress,
+    unix_ISteamBilling_SteamBilling002_GetShippingAddress,
+    unix_ISteamBilling_SteamBilling002_SetCardInfo,
+    unix_ISteamBilling_SteamBilling002_GetCardInfo,
+    unix_ISteamBilling_SteamBilling002_GetLicensePackageID,
+    unix_ISteamBilling_SteamBilling002_GetLicenseTimeCreated,
+    unix_ISteamBilling_SteamBilling002_GetLicenseTimeNextProcess,
+    unix_ISteamBilling_SteamBilling002_GetLicenseMinuteLimit,
+    unix_ISteamBilling_SteamBilling002_GetLicenseMinutesUsed,
+    unix_ISteamBilling_SteamBilling002_GetLicensePaymentMethod,
+    unix_ISteamBilling_SteamBilling002_GetLicenseFlags,
+    unix_ISteamBilling_SteamBilling002_GetLicensePurchaseCountryCode,
+    unix_ISteamBilling_SteamBilling002_GetReceiptPackageID,
+    unix_ISteamBilling_SteamBilling002_GetReceiptStatus,
+    unix_ISteamBilling_SteamBilling002_GetReceiptResultDetail,
+    unix_ISteamBilling_SteamBilling002_GetReceiptTransTime,
+    unix_ISteamBilling_SteamBilling002_GetReceiptTransID,
+    unix_ISteamBilling_SteamBilling002_GetReceiptPaymentMethod,
+    unix_ISteamBilling_SteamBilling002_GetReceiptBaseCost,
+    unix_ISteamBilling_SteamBilling002_GetReceiptTotalDiscount,
+    unix_ISteamBilling_SteamBilling002_GetReceiptTax,
+    unix_ISteamBilling_SteamBilling002_GetReceiptShipping,
+    unix_ISteamBilling_SteamBilling002_GetReceiptCountryCode,
+    unix_ISteamBilling_SteamBilling002_GetNumLicenses,
+    unix_ISteamBilling_SteamBilling002_GetNumReceipts,
+    unix_ISteamBilling_SteamBilling002_PurchaseWithMachineID,
+    unix_ISteamBilling_SteamBilling002_InitClickAndBuyPurchase,
+    unix_ISteamBilling_SteamBilling002_GetPreviousClickAndBuyAccount,
     unix_ISteamClient_SteamClient006_CreateSteamPipe,
     unix_ISteamClient_SteamClient006_BReleaseSteamPipe,
     unix_ISteamClient_SteamClient006_CreateGlobalUser,

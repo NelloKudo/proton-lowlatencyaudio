@@ -89,6 +89,7 @@ static const struct { const char *iface_version; iface_constructor ctor; } const
     {"STEAMVIDEO_INTERFACE_V001", &create_winISteamVideo_STEAMVIDEO_INTERFACE_V001},
     {"STEAMVIDEO_INTERFACE_V002", &create_winISteamVideo_STEAMVIDEO_INTERFACE_V002},
     {"STEAMVIDEO_INTERFACE_V007", &create_winISteamVideo_STEAMVIDEO_INTERFACE_V007},
+    {"SteamBilling002", &create_winISteamBilling_SteamBilling002},
     {"SteamClient006", &create_winISteamClient_SteamClient006},
     {"SteamClient007", &create_winISteamClient_SteamClient007},
     {"SteamClient008", &create_winISteamClient_SteamClient008},
@@ -229,6 +230,7 @@ iface_constructor find_iface_constructor( const char *iface_version )
 extern void init_winISteamAppList_rtti( char * );
 extern void init_winISteamAppTicket_rtti( char * );
 extern void init_winISteamApps_rtti( char * );
+extern void init_winISteamBilling_rtti( char * );
 extern void init_winISteamClient_rtti( char * );
 extern void init_winISteamController_rtti( char * );
 extern void init_winISteamFriends_rtti( char * );
@@ -270,6 +272,7 @@ void init_rtti( char *base )
     init_winISteamAppList_rtti( base );
     init_winISteamAppTicket_rtti( base );
     init_winISteamApps_rtti( base );
+    init_winISteamBilling_rtti( base );
     init_winISteamClient_rtti( base );
     init_winISteamController_rtti( base );
     init_winISteamFriends_rtti( base );

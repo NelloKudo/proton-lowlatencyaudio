@@ -131,6 +131,9 @@ SDK_SOURCES = {
         "ISteamUtils",
         "ISteamVideo"
     ],
+    "isteambilling.h": [
+        "ISteamBilling"
+    ],
     "isteamappticket.h": [
         "ISteamAppTicket"
     ],
