@@ -805,7 +805,7 @@ $(eval $(call rules-source,vosk,$(SRCDIR)/vosk-api))
 $(eval $(call rules-cmake,vosk,i386,unix))
 $(eval $(call rules-cmake,vosk,x86_64,unix))
 
-endif
+endif # WITHOUT_TTS
 
 
 ##
@@ -967,6 +967,8 @@ $(OBJ)/.dxvk-post-source:
 	touch $@
 
 
+ifneq ($(WITHOUT_GPLASYNC),1)
+
 ##
 ## dxvk-gplasync
 ##
@@ -1000,6 +1002,12 @@ $(OBJ)/.dxvk-gplasync-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- dxvk-gplasync)" > $(DST_LIBDIR)/wine/dxvk-gplasync/version
 	touch $@
 
+default_pfx: dxvk-gplasync
+
+endif # WITHOUT_GPLASYNC
+
+
+ifneq ($(WITHOUT_SAREK),1)
 
 ##
 ## dxvk-sarek
@@ -1034,6 +1042,10 @@ $(OBJ)/.dxvk-sarek-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- dxvk-sarek)" > $(DST_LIBDIR)/wine/dxvk-sarek/version
 	touch $@
 
+default_pfx: dxvk-sarek
+
+endif # WITHOUT_SAREK
+
 
 ##
 ## dxvk-nvapi
@@ -1059,6 +1071,8 @@ $(OBJ)/.dxvk-nvapi-post-source:
 	touch $@
 
 
+ifneq ($(WITHOUT_NVIDIA_LIBS),1)
+
 ##
 ## nvlibs-nvapi
 ##
@@ -1082,6 +1096,7 @@ $(OBJ)/.nvlibs-nvapi-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- nvidia-libs/dxvk-nvapi)" > $(DST_LIBDIR)/wine/nvidia-libs/nvapi/version
 	touch $@
 
+default_pfx: nvlibs-nvapi
 
 ##
 ## nvcuda
@@ -1108,6 +1123,7 @@ $(OBJ)/.nvcuda-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- nvidia-libs/nvcuda)" > $(DST_LIBDIR)/wine/nvidia-libs/nvcuda/version
 	touch $@
 
+default_pfx: nvcuda
 
 ##
 ## nvenc
@@ -1134,6 +1150,7 @@ $(OBJ)/.nvenc-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- nvidia-libs/nvenc)" > $(DST_LIBDIR)/wine/nvidia-libs/nvenc/version
 	touch $@
 
+default_pfx: nvenc
 
 ##
 ## nvml_so
@@ -1156,6 +1173,7 @@ $(OBJ)/.nvml_so-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- nvidia-libs/wine-nvml)" > $(DST_LIBDIR)/wine/nvidia-libs/nvml/version
 	touch $@
 
+default_pfx: nvml_so
 
 ##
 ## nvml_dll
@@ -1178,6 +1196,7 @@ $(OBJ)/.nvml_dll-post-source:
 	echo "$(shell git -C $(SRCDIR) submodule status -- nvidia-libs/wine-nvml)" > $(DST_LIBDIR)/wine/nvidia-libs/nvml/version
 	touch $@
 
+default_pfx: nvml_dll
 
 ##
 ## nvoptix
@@ -1198,6 +1217,10 @@ $(OBJ)/.nvoptix-post-source:
 	rm -rf $(DST_LIBDIR)/wine/nvidia-libs/nvoptix/version
 	echo "$(shell git -C $(SRCDIR) submodule status -- nvidia-libs/wine-nvoptix)" > $(DST_LIBDIR)/wine/nvidia-libs/nvoptix/version
 	touch $@
+
+default_pfx: nvoptix
+
+endif # WITHOUT_NVIDIA_LIBS
 
 
 ##
@@ -1764,7 +1787,7 @@ all-dist: $(OVR_i386_DIST) $(OVR_x86_64_DIST)
 ## default_pfx
 ##
 
-default_pfx: vkd3d dxvk-sarek nvlibs-nvapi nvcuda nvenc nvml_so nvml_dll nvoptix dxvk-gplasync
+default_pfx: vkd3d
 
 default_pfx: wine gst_good gst_bad gst_libav gst_plugins_rs lsteamclient steamexe vrclient wineopenxr dxvk dxvk-nvapi vkd3d-proton
 	find $(DST_LIBDIR)/wine -type f -execdir chmod go-w '{}' '+'
