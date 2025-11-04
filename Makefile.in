@@ -61,7 +61,6 @@ x86_64_CFLAGS  := -mcmodel=small $(CCOS_CFLAGS) -mprefer-avx128 -mno-avx512f -mf
 CFLAGS  = -fwrapv -fno-strict-aliasing
 CFLAGS += -s -ffunction-sections -fdata-sections -fno-omit-frame-pointer
 CFLAGS += -ffile-prefix-map=$(CCACHE_BASEDIR)=.
-CFLAGS += -Wl,--exclude-libs=libstdc++.a
 CFLAGS += -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64
 
 ifneq ($(SUPPRESS_WARNINGS),)
@@ -94,6 +93,13 @@ windows_ARCHS = $(subst -windows,,$(filter %-windows,$(ARCHS)))
 
 i386_SOURCE_DATE_EPOCH := $(BASE_SOURCE_DATE_EPOCH)
 x86_64_SOURCE_DATE_EPOCH := $(shell expr $(BASE_SOURCE_DATE_EPOCH) - 10)
+
+ifeq ($(shell cc --version|grep 'clang'),)
+	# GCC-specific flags
+	# required because SteamRT's GCC14 statically links with libstdc++ and this
+	# avoids re-exporting of its symbols in every .so created this way
+	CFLAGS += -Wl,--exclude-libs=libstdc++.a
+endif
 
 # all, all-dist and dist are basically synonyms
 .PHONY: all all-dist dist
