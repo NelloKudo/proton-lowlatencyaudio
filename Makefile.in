@@ -42,12 +42,12 @@ DEPLOY_DIR := ./deploy
 REDIST_DIR := ./redist
 
 HOST_CFLAGS    ?= -O2 -march=nocona -mtune=core-avx2
-CCOS_CFLAGS    := $(HOST_CFLAGS) -pipe -fvect-cost-model=cheap -fno-semantic-interposition -fipa-pta
-i386_CFLAGS    := -mstackrealign $(CCOS_CFLAGS) -mprefer-avx128 -mno-avx512f -mfpmath=sse
-x86_64_CFLAGS  := -mcmodel=small $(CCOS_CFLAGS) -mprefer-avx128 -mno-avx512f -mfpmath=sse
+CCOS_CFLAGS    := $(HOST_CFLAGS) -pipe
+i386_CFLAGS    := -mstackrealign $(CCOS_CFLAGS) -mno-avx512f -mfpmath=sse
+x86_64_CFLAGS  := -mcmodel=small $(CCOS_CFLAGS) -mno-avx512f -mfpmath=sse
 
 CFLAGS  = -fwrapv -fno-strict-aliasing
-CFLAGS += -s -ffunction-sections -fdata-sections -fno-omit-frame-pointer
+CFLAGS += -ffunction-sections -fdata-sections -fno-omit-frame-pointer
 CFLAGS += -ffile-prefix-map=$(CCACHE_BASEDIR)=.
 CFLAGS += -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64
 
@@ -965,7 +965,7 @@ DXVK_i386_MESON_ARGS = --bindir=$(DXVK_i386_DST)/lib/wine/dxvk/i386-windows
 DXVK_x86_64_MESON_ARGS = --bindir=$(DXVK_x86_64_DST)/lib/wine/dxvk/x86_64-windows
 DXVK_HOST_DEPENDS = glslang
 
-DXVK_i386_CFLAGS = -O3 -mno-avx -mpreferred-stack-boundary=2
+DXVK_i386_CFLAGS = -O3 -mno-avx -mstack-alignment=4
 DXVK_x86_64_CFLAGS = -O3 -mno-avx
 DXVK_CPPFLAGS = -msse -msse2
 DXVK_LDFLAGS = -static -static-libgcc -static-libstdc++
@@ -1001,7 +1001,7 @@ DXVK_GPLASYNC_i386_MESON_ARGS = --bindir=$(DXVK_GPLASYNC_i386_DST)/lib/wine/dxvk
 DXVK_GPLASYNC_x86_64_MESON_ARGS = --bindir=$(DXVK_GPLASYNC_x86_64_DST)/lib/wine/dxvk-gplasync/x86_64-windows
 DXVK_GPLASYNC_HOST_DEPENDS = glslang
 
-DXVK_GPLASYNC_i386_CFLAGS = -O3 -mno-avx -mpreferred-stack-boundary=2
+DXVK_GPLASYNC_i386_CFLAGS = -O3 -mno-avx -mstack-alignment=4
 DXVK_GPLASYNC_x86_64_CFLAGS = -O3 -mno-avx
 DXVK_GPLASYNC_CPPFLAGS = -msse -msse2
 DXVK_GPLASYNC_LDFLAGS = -static -static-libgcc -static-libstdc++
@@ -1041,7 +1041,7 @@ DXVK_SAREK_i386_MESON_ARGS = --bindir=$(DXVK_SAREK_i386_DST)/lib/wine/dxvk-sarek
 DXVK_SAREK_x86_64_MESON_ARGS = --bindir=$(DXVK_SAREK_x86_64_DST)/lib/wine/dxvk-sarek/x86_64-windows
 DXVK_SAREK_HOST_DEPENDS = glslang
 
-DXVK_SAREK_i386_CFLAGS = -O3 -mno-avx -mpreferred-stack-boundary=2
+DXVK_SAREK_i386_CFLAGS = -O3 -mno-avx -mstack-alignment=4
 DXVK_SAREK_x86_64_CFLAGS = -O3 -mno-avx
 DXVK_SAREK_CPPFLAGS = -msse -msse2
 DXVK_SAREK_LDFLAGS = -static -static-libgcc -static-libstdc++
@@ -1071,7 +1071,7 @@ DXVK_NVAPI_MESON_ARGS = -Db_ndebug=true
 DXVK_NVAPI_i386_MESON_ARGS = --bindir=$(DXVK_NVAPI_i386_DST)/lib/wine/nvapi/i386-windows
 DXVK_NVAPI_x86_64_MESON_ARGS = --bindir=$(DXVK_NVAPI_x86_64_DST)/lib/wine/nvapi/x86_64-windows
 
-DXVK_NVAPI_i386_CFLAGS = -O3 -mpreferred-stack-boundary=2
+DXVK_NVAPI_i386_CFLAGS = -O3 -mstack-alignment=4
 DXVK_NVAPI_x86_64_CFLAGS = -O3
 DXVK_NVAPI_CPPFLAGS = -msse -msse2
 DXVK_NVAPI_LDFLAGS = -static -static-libgcc -static-libstdc++
@@ -1097,7 +1097,7 @@ NVLIBS_NVAPI_MESON_ARGS = -Db_ndebug=true
 NVLIBS_NVAPI_i386_MESON_ARGS = --bindir=$(NVLIBS_NVAPI_i386_DST)/lib/wine/nvidia-libs/nvapi/i386-windows
 NVLIBS_NVAPI_x86_64_MESON_ARGS = --bindir=$(NVLIBS_NVAPI_x86_64_DST)/lib/wine/nvidia-libs/nvapi/x86_64-windows
 
-NVLIBS_NVAPI_i386_CFLAGS = -O3 -mpreferred-stack-boundary=2
+NVLIBS_NVAPI_i386_CFLAGS = -O3 -mstack-alignment=4
 NVLIBS_NVAPI_x86_64_CFLAGS = -O3
 NVLIBS_NVAPI_CPPFLAGS = -msse -msse2
 NVLIBS_NVAPI_LDFLAGS = -static -static-libgcc -static-libstdc++
@@ -1270,7 +1270,7 @@ VKD3D_CFLAGS = -fno-lto
 VKD3D_LDFLAGS = -static-libgcc $(CROSSLDFLAGS)
 VKD3D_DEPENDS = vulkan-headers spirv-headers
 
-VKD3D_i386_CFLAGS = -O3 -mpreferred-stack-boundary=2
+VKD3D_i386_CFLAGS = -O3 -mstack-alignment=4
 VKD3D_x86_64_CFLAGS = -O3
 
 VKD3D_i386_LIBDIR = $(VKD3D_i386_DST)/lib
@@ -1323,7 +1323,7 @@ ifneq ($(UNSTRIPPED_BUILD),)
 	VKD3D_PROTON_MESON_ARGS = -Denable_trace=true
 endif
 
-VKD3D_PROTON_i386_CFLAGS = -O3 -mpreferred-stack-boundary=2
+VKD3D_PROTON_i386_CFLAGS = -O3 -mstack-alignment=4
 VKD3D_PROTON_x86_64_CFLAGS = -O3
 VKD3D_PROTON_CPPFLAGS = -msse -msse2
 VKD3D_PROTON_LDFLAGS = -static -static-libgcc -static-libstdc++
