@@ -1,25 +1,21 @@
-name: _job_build
+name: Build
 
 on:
-  workflow_call:
-    inputs:
-      name:
-        required: true
-        type: string
-      cpu_arch:
-        required: true
-        type: string
-      cpu_tune:
-        required: true
-        type: string
+  workflow_dispatch:
+  push:
+    tags:
+      - 'proton-cachyos-lowlatencyaudio*'
+
+permissions:
+  contents: write
 
 jobs:
-  proton:
-    name: Build ${{ inputs.name }}
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
 
-    - name: Debloat GitHub runner
+    - name: Debloat GitHub CI
       uses: endersonmenezes/free-disk-space@v2
       with:
         remove_android: true
@@ -31,7 +27,7 @@ jobs:
         remove_packages_one_command: true
         remove_folders: "/usr/share/swift /usr/share/miniconda /usr/share/az* /usr/local/lib/node_modules /usr/local/share/chromium /usr/local/share/powershell /usr/local/julia /usr/local/aws-cli /usr/local/aws-sam-cli /usr/share/gradle"
         testing: false
-
+    
     - name: Prepare host
       run: sudo apt update && sudo apt-get install -y ccache fontforge-nox
 
@@ -40,9 +36,9 @@ jobs:
       uses: actions/cache/restore@v4
       with:
         path: ~/.ccache
-        key: ccache-proton-${{ inputs.cpu_arch }}-${{ inputs.cpu_tune }}-${{ github.run_id }}
+        key: ccache-proton-${{ github.run_id }}
         restore-keys: |
-          ccache-proton-${{ inputs.cpu_arch }}-${{ inputs.cpu_tune }}
+          ccache-proton-
 
     - name: Checkout
       uses: actions/checkout@v4
@@ -56,17 +52,16 @@ jobs:
         git submodule update --init --filter=tree:0 --recursive
         ./patches/apply.sh
         mkdir ./build
-
+    
     - name: Configure
       working-directory: ./build
       env:
-        CFLAGS: -O2 -march=${{ inputs.cpu_arch }} -mtune=${{ inputs.cpu_tune }}
         RUSTFLAGS: -Copt-level=3 -Ctarget-cpu=nocona
         USE_LTO: 0
       run: |
-        ../configure.sh --build-name=${{ inputs.name }} --enable-ccache --container-engine=docker
+        ../configure.sh --build-name=${{ github.ref_name }}-x86_64 --enable-ccache --container-engine=docker --without-nvidia-libs
 
-    - name: Make ${{ inputs.name }}
+    - name: Make ${{ github.ref_name }}-x86_64
       working-directory: ./build
       run: |
         make -j$(nproc) redist
@@ -79,15 +74,37 @@ jobs:
         path: ~/.ccache
         key: ${{ steps.ccache-restore.outputs.cache-primary-key }}
 
-    - name: Upload artifact ${{ inputs.name }}.tar.xz
+    - name: Upload artifact ${{ github.ref_name }}-x86_64.tar.xz
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.name }}.tar.xz
-        path: ./build/${{ inputs.name }}.tar.xz
+        name: ${{ github.ref_name }}-x86_64.tar.xz
+        path: ./build/${{ github.ref_name }}-x86_64.tar.xz
 
-    - name: Upload artifact ${{ inputs.name }}.sha512sum
+    - name: Upload artifact ${{ github.ref_name }}-x86_64.sha512sum
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.name }}.sha512sum
-        path: ./build/${{ inputs.name }}.sha512sum
+        name: ${{ github.ref_name }}-x86_64.sha512sum
+        path: ./build/${{ github.ref_name }}-x86_64.sha512sum
 
+  release:
+    name: Release
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: github.ref_type == 'tag'
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Merge artifacts
+        run: |
+          mkdir -p upload
+          mv ./artifacts/*/* ./upload/
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2.2.1
+        with:
+          make_latest: true
+          name: ${{ github.ref_name }}
+          files: ./upload/*
